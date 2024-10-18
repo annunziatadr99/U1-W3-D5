@@ -204,7 +204,7 @@ console.log(utenteModif);
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
-const newestMovie = function () {
+function newestMovie() {
   let newFilm = movies[0];
   console.log(newFilm);
   for (let i = 0; i < movies.length; i++) {
@@ -213,7 +213,7 @@ const newestMovie = function () {
     }
   }
   return newFilm;
-};
+}
 console.log(newestMovie());
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
