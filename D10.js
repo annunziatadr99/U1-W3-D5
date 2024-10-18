@@ -89,30 +89,55 @@ console.log(arrayParole);
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
-function deleteOne(stringa, eliminaElement) {
-  if (eliminaElement) {
-    return stringa.slice(1);
+function deleteOne(string, booleano) {
+  if (booleano) {
+    return string.slice(1);
   } else {
-    return stringa.slice(0, -1);
+    return string.slice(0, -1);
   }
 }
 const nuoveParole1 = deleteOne(parole1, true);
 console.log(nuoveParole1);
+
+const nuoveParole2 = deleteOne(parole1, false);
+console.log(nuoveParole2);
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
 
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
+function onlyLetters(string) {
+  return string.replace(/\d+/g, ""); //non conoscevo questa espressione e l'ho ricercata su google per risolvere l'esercizio
+}
+const stringa5 = "Ciao sono Dario ho 24 anni ";
+const senzaNumeri = onlyLetters(stringa5);
+console.log(senzaNumeri);
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
-
+/*function isThisAnEmail(string) {
+  if (string === "@.") {
+    return string;
+  } else {
+    console.log("non è un e-mail");
+  }
+}
+const email1 = "anudar99@hotmail.it";
+const verificaEmail = isThisAnEmail(email1); // non riesco a trovare l'errore
+console.log(verificaEmail);*/
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
-*/
-
+  */
+function whatDayIsIt() {
+  const giorniSettimana = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+  const dataOggi = new Date();
+  const giornoSettimana = dataOggi.getDay(); // metodo get serve ad accedere al valore DATE dove sono presenti i giorni della settimana
+  return giorniSettimana[giornoSettimana];
+}
+const giornoDiOggi = whatDayIsIt();
+console.log("Oggi è", giornoDiOggi);
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
   Deve invocare la precedente funzione dice() il numero di volte specificato nel parametro, e deve tornare un oggetto contenente una proprietà "sum":
