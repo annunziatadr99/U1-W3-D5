@@ -117,7 +117,7 @@ console.log(senzaNumeri);
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
-/*function isThisAnEmail(string) {
+function isThisAnEmail(string) {
   if (string === "@.") {
     return string;
   } else {
@@ -126,18 +126,19 @@ console.log(senzaNumeri);
 }
 const email1 = "anudar99@hotmail.it";
 const verificaEmail = isThisAnEmail(email1); // non riesco a trovare l'errore
-console.log(verificaEmail);*/
+console.log(verificaEmail);
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
   */
-function whatDayIsIt() {
+/*function whatDayIsIt() {
   const giorniSettimana = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
   const dataOggi = new Date();
   const giornoSettimana = dataOggi.getDay(); // metodo get serve ad accedere al valore DATE dove sono presenti i giorni della settimana
   return giorniSettimana[giornoSettimana];
 }
 const giornoDiOggi = whatDayIsIt();
-console.log("Oggi è", giornoDiOggi);
+console.log("Oggi è", giornoDiOggi);*/
+
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
   Deve invocare la precedente funzione dice() il numero di volte specificato nel parametro, e deve tornare un oggetto contenente una proprietà "sum":
@@ -154,11 +155,31 @@ console.log("Oggi è", giornoDiOggi);
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
-
+function howManyDays(dataIniziale) {
+  const dataInizio = new Date(dataIniziale);
+  const dataOggi = new Date();
+  const differenza = dataOggi - dataInizio;
+  const giorniTrascorsi = Math.floor(differenza / (1000 * 60 * 60 * 24));
+  return giorniTrascorsi;
+}
+const dataPartenza = "1999-10-18";
+const giorni = howManyDays(dataPartenza);
+console.log(giorni);
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
+function isTodayMyBirthday(giornoNascita, meseNascita) {
+  const today = new Date();
+  const giornoCorrent = today.getDate();
+  const meseCorrent = today.getMonth() + 1;
+  return giornoCorrent === giornoNascita && meseCorrent === meseNascita;
+}
 
+const giornoNascita1 = 28;
+const meseNascita1 = 10;
+if (isTodayMyBirthday(giornoNascita1, meseNascita1)) {
+  console.log("Oggi sei un anno più vecchio!");
+} else console.log("Mi dispiace, ma oggi non è il tuo compleanno");
 // Arrays & Oggetti
 
 // NOTA: l'array "movies" usato in alcuni esercizi è definito alla fine di questo file
@@ -167,11 +188,33 @@ console.log("Oggi è", giornoDiOggi);
   Scrivi una funzione chiamata "deleteProp" che riceve un oggetto e una stringa come parametri; deve ritornare l'oggetto fornito dopo aver eliminato
   in esso la proprietà chiamata come la stringa passata come secondo parametro.
 */
-
+function deleteProp(object, prop) {
+  if (object && object[prop] !== undefined) {
+    delete object[prop];
+  }
+  return object;
+}
+const utente1 = {
+  nome: "Pasquale",
+  cognome: "Somma",
+  età: 32,
+};
+const utenteModif = deleteProp(utente1, "età");
+console.log(utenteModif);
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
-
+const newestMovie = function () {
+  let newFilm = movies[0];
+  console.log(newFilm);
+  for (let i = 0; i < movies.length; i++) {
+    if (parseInt(newFilm.Year) < parseInt(movies[i].Year)) {
+      newFilm = movies[i];
+    }
+  }
+  return newFilm;
+};
+console.log(newestMovie());
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
